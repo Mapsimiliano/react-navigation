@@ -28,9 +28,9 @@ export default function useWindowDimensions() {
     // So make sure to update the dimensions
     onChange({ window: Dimensions.get('window') });
 
-    Dimensions.addEventListener('change', onChange);
+    const subscrA = Dimensions.addEventListener('change', onChange);
 
-    return () => Dimensions.removeEventListener('change', onChange);
+    return () => subscrA?.remove();
   }, []);
 
   return dimensions;
